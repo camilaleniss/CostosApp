@@ -10,4 +10,11 @@ public class BaseAsignacion {
 		this.nombre=nombre;
 	}
 
+	public int getUnidades() {
+		return unidades;
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
 }
