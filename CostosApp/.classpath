@@ -22,5 +22,14 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/camil/.m2/repository/com/jfoenix/jfoenix/8.0.7/jfoenix-8.0.7.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="com.jfoenix"/>
+			<attribute name="maven.artifactId" value="jfoenix"/>
+			<attribute name="maven.version" value="8.0.7"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
