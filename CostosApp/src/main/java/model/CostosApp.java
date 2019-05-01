@@ -4,11 +4,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CostosApp {
-	
+	/**
+	 * ArrayList que contiene las tasascif presupuestadas
+	 * La sumatoria del porcentaje de cada tasacif debe dar 100
+	 */
 	private ArrayList<Presupuesto> tasascif;
+	/**
+	 * Cif aplicado del periodo 
+	 */
 	private double cifaplicado;
+	
 	private ArrayList<Double> cifreal;
+	
 	private HashMap<Integer, Orden> ordenes;
+	
 	private double variacion;
 	
 	public CostosApp() {

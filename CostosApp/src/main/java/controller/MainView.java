@@ -1,50 +1,26 @@
 package controller;
 
 import javafx.fxml.FXML;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXListView;
-
-import model.Orden;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 public class MainView {
 
     @FXML
-    private JFXButton butAddPresupuesto;
+    private TextField txtFieldNumeroDeOrden;
 
     @FXML
-    private JFXButton butAddOrden;
+    private TextField txtFieldMaterialDirecto;
 
     @FXML
-    private JFXButton butVariacion;
+    private TextField txtManoDeObra;
 
     @FXML
-    private JFXButton butAddCIFReal;
+    private ChoiceBox<?> choiceBoxCIF;
 
     @FXML
-    private JFXTextField txtNOrden;
-
-    @FXML
-    private JFXTextField txtMD;
-
-    @FXML
-    private JFXTextField txtMOD;
-
-    @FXML
-    private JFXComboBox<?> comboCIF;
-
-    @FXML
-    private JFXButton butSubmitCIF;
-
-    @FXML
-    private JFXTextField txtCIF;
-
-    @FXML
-    private JFXTextField txtVariacion;
-
-    @FXML
-    private JFXListView<Orden> listOrdenes;
+    private Label txtVariacion;
 
 }
 
