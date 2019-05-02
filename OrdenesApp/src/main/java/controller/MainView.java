@@ -144,7 +144,7 @@ public class MainView {
     	app.calcularVariacion();
     	double variacion = app.getVariacion();
     	DecimalFormat formato1 = new DecimalFormat("#.0");
-    	txtVariacion.setText(""+formato1.format(variacion));
+    	txtVariacion.setText("$"+formato1.format(variacion));
     	String var = (variacion<0) ? "Cif subaplicado " : "Cif sobreaplicado";
     	labVariacion.setText(var);
     }
@@ -162,7 +162,8 @@ public class MainView {
     		labVariacion.setVisible(false);
     		txtVariacion.setVisible(false);
     	}
-    	
+    	txtTasaCIF.setEditable(false);
+    	txtVariacion.setEditable(false);
     	updateList();
     }
     

@@ -9,7 +9,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="304.0" prefWidth="358.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RealController">
    <top>
-      <Label text="PRESUPUESTO" BorderPane.alignment="CENTER">
+      <Label text="Costos indirectos reales" BorderPane.alignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
