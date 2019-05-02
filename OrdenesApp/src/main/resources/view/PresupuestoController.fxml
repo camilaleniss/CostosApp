@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PresupuestoController">
    <top>
       <Label text="PRESUPUESTO" BorderPane.alignment="CENTER">
@@ -36,7 +35,7 @@
             </Label>
             <JFXTextField fx:id="txtCIF" layoutX="277.0" layoutY="111.0" prefHeight="25.0" prefWidth="155.0" />
             <JFXTextField fx:id="txtBase" layoutX="277.0" layoutY="157.0" prefHeight="25.0" prefWidth="155.0" />
-            <JFXTextField fx:id="txtPorcentaje" layoutX="277.0" layoutY="200.0" prefHeight="25.0" prefWidth="161.0" />
+            <JFXTextField fx:id="txtNombre" layoutX="277.0" layoutY="200.0" prefHeight="25.0" prefWidth="161.0" />
             <JFXButton fx:id="butSave" layoutX="241.0" layoutY="267.0" onAction="#butGuardar" style="-fx-background-color: lightgrey;" text="Guardar" />
          </children>
       </AnchorPane>

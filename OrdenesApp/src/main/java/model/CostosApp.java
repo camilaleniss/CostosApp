@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CostosApp {
-	
+	/**
+	 * Presupuesto del periodo
+	 */
 	private Presupuesto tasacif;
 	/**
 	 * Cif aplicado del periodo 
@@ -13,7 +15,7 @@ public class CostosApp {
 	
 	private ArrayList<Double> cifreal;
 	
-	private HashMap<Integer, Orden> ordenes;
+	private ArrayList<Orden> ordenes;
 	
 	private double variacion;
 	
@@ -21,7 +23,7 @@ public class CostosApp {
 		cifaplicado = 0;
 		cifreal = new ArrayList<Double>();
 		variacion =0; 
-		ordenes = new HashMap<Integer, Orden>();
+		ordenes = new ArrayList<Orden>();
 	}
 	
 	public Presupuesto getTasasCif(){
@@ -40,6 +42,10 @@ public class CostosApp {
 		return variacion;
 	}
 	
+	public ArrayList<Orden> getOrdenes(){
+		return ordenes;
+	}
+	
 	public void addPresupuesto(double cifpp, int unidades, String base) {
 		tasacif = new Presupuesto (cifpp, new BaseAsignacion(unidades, base));
 	}
@@ -49,7 +55,7 @@ public class CostosApp {
 	}
 	
 	public void addOrden(int id) {
-		ordenes.put(id, new Orden());
+		ordenes.add(new Orden(id));
 	}
 	
 	public void modifyMd(int id, double md) {
@@ -69,11 +75,18 @@ public class CostosApp {
 	
 	public void calcularCifAplicado() {
 		cifaplicado=0;
-		ArrayList<Orden> ordeness = (ArrayList<Orden>) ordenes.values();
-		
-		for (int i = 0; i<ordeness.size(); i++) {
-			cifaplicado+=ordeness.get(i).getCif()*tasacif.getTasaCif();
+
+		for (int i = 0; i<ordenes.size(); i++) {
+			cifaplicado+=ordenes.get(i).getCif()*tasacif.getTasaCif();
 		}
+	}
+	
+	public ArrayList<String> toArrayListOrdenes() {
+		ArrayList<String> lista = new ArrayList<String>();
+		for (int i=0; i<ordenes.size(); i++) {
+			lista.add(ordenes.get(i).toString());
+		}
+		return lista;
 	}
 	
 
