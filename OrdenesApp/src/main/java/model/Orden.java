@@ -7,11 +7,11 @@ public class Orden {
 	private double mod;
 	private double cif;
 	
-	public Orden(int numero) {
+	public Orden(int numero, double md, double mod, double cif) {
 		this.numero=numero;
-		md = 0;
-		mod= 0;
-		cif = 0;
+		this.md= md;
+		this.mod=mod;
+		this.cif=cif;
 		
 	}
 	

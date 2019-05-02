@@ -54,8 +54,9 @@ public class CostosApp {
 		return ordenes.get(id);
 	}
 	
-	public void addOrden(int id) {
-		ordenes.add(new Orden(id));
+	public void addOrden(int id, double md, double mod, double cif) {
+		ordenes.add(new Orden(id, md, mod, cif));
+		
 	}
 	
 	public void modifyMd(int id, double md) {
@@ -79,6 +80,23 @@ public class CostosApp {
 		for (int i = 0; i<ordenes.size(); i++) {
 			cifaplicado+=ordenes.get(i).getCif()*tasacif.getTasaCif();
 		}
+	}
+	
+	public void addCIFReal(double real) {
+		cifreal.add(real);
+	}
+	
+	public double calcularCIFReal() {
+		double real=0;
+		for (int i = 0; i<cifreal.size(); i++) {
+			real+=cifreal.get(i);
+		}
+		return real;
+	}
+	
+	public void calcularVariacion() {
+		calcularCifAplicado();
+		variacion = cifaplicado-calcularCIFReal();
 	}
 	
 	public ArrayList<String> toArrayListOrdenes() {

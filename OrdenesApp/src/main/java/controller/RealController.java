@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 
@@ -10,41 +11,38 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 import model.CostosApp;
 
-public class PresupuestoController {
+public class RealController {
 
     @FXML
-    private JFXTextField txtCIF;
+    private JFXTextField txtName;
 
     @FXML
-    private JFXTextField txtBase;
+    private JFXTextField txtReal;
 
     @FXML
-    private JFXTextField txtNombre;
+    private JFXButton txtAtras;
 
     @FXML
-    private JFXButton butSave;
-
-    private CostosApp app;
+    private JFXButton butCargar;
     
-    @FXML
-    void butGuardar(ActionEvent event) {
-    	double cif = Double.parseDouble(txtCIF.getText());
-    	int unidades = Integer.parseInt(txtBase.getText());
-    	String nombre = txtNombre.getText();
-    	app.addPresupuesto(cif, unidades, nombre);
-    	getBack();
+    private CostosApp app;
+
+    public void init(CostosApp app) {
+    	this.app=app;
     }
     
-    void getBack() {
+    @FXML
+    void butAtras(ActionEvent event) {
     	FXMLLoader loader = new FXMLLoader();
     	loader.setLocation(getClass().getResource("/view/MainView.fxml"));
     	Parent root;
 		try {
 			root = loader.load();
 			Scene scene = new Scene(root);		
-	    	Stage stage = (Stage)butSave.getScene().getWindow();
+	    	Stage stage = (Stage)txtAtras.getScene().getWindow();
 	    	stage.setScene(scene);
 	    	MainView contr = loader.getController();
 			contr.init(app);
@@ -53,9 +51,11 @@ public class PresupuestoController {
 			e.printStackTrace();
 		}
     }
-    
-    public void init(CostosApp app) {
-    	this.app=app;
+
+    @FXML
+    void butGuardar(ActionEvent event) {
+    	Double real = Double.parseDouble(txtReal.getText());
+    	app.addCIFReal(real);
     }
 
 }

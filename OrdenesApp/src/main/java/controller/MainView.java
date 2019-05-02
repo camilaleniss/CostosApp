@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -48,6 +47,9 @@ public class MainView {
 
     @FXML
     private JFXButton butAddOrden;
+    
+    @FXML
+    private Label labVariacion;
 
     @FXML
     private JFXListView<Label> listOrdenes;
@@ -57,12 +59,35 @@ public class MainView {
 
     @FXML
     void addCIFREAL(ActionEvent event) {
-
+    	JOptionPane.showMessageDialog(null, "Que gonorrea");
+    	FXMLLoader loader = new FXMLLoader();
+    	loader.setLocation(getClass().getResource("/view/RealController.fxml"));
+    	Parent root;
+		try {
+			root = loader.load();
+			Scene scene = new Scene(root);
+	    	Stage stage = (Stage) butAddCIFReal.getScene().getWindow();
+	    	stage.setScene(scene);
+	    	RealController contr = loader.getController();
+	    	contr.init(app);
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 
     @FXML
     void addOrdenes(ActionEvent event) {
-
+    	int id = Integer.parseInt(txtNOrden.getText());
+    	double md = Double.parseDouble(txtMD.getText());
+    	double mod = Double.parseDouble(txtMOD.getText());
+    	double cif = Double.parseDouble(txtCIF.getText());
+    	app.addOrden(id, md, mod, cif);
+    	updateList();
+    	txtNOrden.setText("");
+    	txtMD.setText("");
+    	txtMOD.setText("");
+    	txtCIF.setText("");
     }
 
     @FXML
@@ -86,7 +111,11 @@ public class MainView {
 
     @FXML
     void showVariacion(ActionEvent event) {
-
+    	app.calcularVariacion();
+    	double variacion = app.getVariacion();
+    	txtVariacion.setText(""+variacion);
+    	String var = (variacion<0) ? "Cif subaplicado " : "Cif sobreaplicado";
+    	labVariacion.setText(var);
     }
 
     @FXML
@@ -99,11 +128,13 @@ public class MainView {
     		butAddCIFReal.setDisable(true);
     		butAddOrden.setDisable(true);
     		butVariacion.setDisable(true);
+    		labVariacion.setVisible(false);
+    		txtVariacion.setVisible(false);
+    		updateList();
     	}
     }
     
-    @FXML
-    void refresh(ActionEvent event) {
+    public void updateList() {
     	ObservableList<Label> list = FXCollections.observableArrayList();
     	ArrayList<String> ordenes = app.toArrayListOrdenes();
     	
@@ -112,13 +143,18 @@ public class MainView {
 		}
     	
     	listOrdenes.setItems(list);
+    	JOptionPane.showMessageDialog(null, "se intento");
     }
+    
 
     public void init(CostosApp app) {
     	this.app=app;
     	butAddCIFReal.setDisable(false);
 		butAddOrden.setDisable(false);
 		butVariacion.setDisable(false);
+		updateList();
+		//labVariacion.setVisible(false);
+		//txtVariacion.setVisible(false);
     }
     
 }
