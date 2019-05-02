@@ -1,5 +1,7 @@
 package model;
 
+import java.text.DecimalFormat;
+
 public class Presupuesto {
 	
 	private double cifpresupuestado;
@@ -28,6 +30,12 @@ public class Presupuesto {
 	
 	public double getTasaCif() {
 		return cifpresupuestado/baseasignacion.getUnidades();
+	}
+	
+	public String toString() {
+		
+		DecimalFormat formato1 = new DecimalFormat("#.0");
+		return "$"+formato1.format(getTasaCif())+"/"+baseasignacion.getNombre();
 	}
 	
 }

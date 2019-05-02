@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -15,7 +16,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import model.CostosApp;
 
@@ -52,14 +55,16 @@ public class MainView {
     private Label labVariacion;
 
     @FXML
-    private JFXListView<Label> listOrdenes;
+    private JFXListView<String> listOrdenes;
+    
+    @FXML
+    private JFXTextField txtTasaCIF;
     
     private CostosApp app;
     
 
     @FXML
     void addCIFREAL(ActionEvent event) {
-    	JOptionPane.showMessageDialog(null, "Que gonorrea");
     	FXMLLoader loader = new FXMLLoader();
     	loader.setLocation(getClass().getResource("/view/RealController.fxml"));
     	Parent root;
@@ -78,11 +83,36 @@ public class MainView {
 
     @FXML
     void addOrdenes(ActionEvent event) {
+    	try {
     	int id = Integer.parseInt(txtNOrden.getText());
     	double md = Double.parseDouble(txtMD.getText());
     	double mod = Double.parseDouble(txtMOD.getText());
     	double cif = Double.parseDouble(txtCIF.getText());
-    	app.addOrden(id, md, mod, cif);
+    	
+    	
+    	if(id<0 || md<0 || mod<0 || cif<0)
+    		throw new NumberFormatException ();
+    	
+    	
+    		app.addOrden(id, md, mod, cif);
+    	
+    	}catch(NumberFormatException e) {
+    		
+    		Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText(null);
+			alert.setContentText("Ingrese un número válido");
+
+			alert.showAndWait();
+    	}catch(Exception e) {
+    		
+    		Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText(null);
+			alert.setContentText("Datos inválidos, vuelva a intentarlo");
+
+			alert.showAndWait();
+    	}
     	updateList();
     	txtNOrden.setText("");
     	txtMD.setText("");
@@ -113,7 +143,8 @@ public class MainView {
     void showVariacion(ActionEvent event) {
     	app.calcularVariacion();
     	double variacion = app.getVariacion();
-    	txtVariacion.setText(""+variacion);
+    	DecimalFormat formato1 = new DecimalFormat("#.0");
+    	txtVariacion.setText(""+formato1.format(variacion));
     	String var = (variacion<0) ? "Cif subaplicado " : "Cif sobreaplicado";
     	labVariacion.setText(var);
     }
@@ -130,31 +161,39 @@ public class MainView {
     		butVariacion.setDisable(true);
     		labVariacion.setVisible(false);
     		txtVariacion.setVisible(false);
-    		updateList();
     	}
+    	
+    	updateList();
     }
     
     public void updateList() {
-    	ObservableList<Label> list = FXCollections.observableArrayList();
+    	ObservableList<String> list = FXCollections.observableArrayList();
     	ArrayList<String> ordenes = app.toArrayListOrdenes();
     	
     	for (int i = 0; i < ordenes.size(); i++) {
-			list.add(new Label(ordenes.get(i)));
+			list.add(ordenes.get(i));
 		}
     	
     	listOrdenes.setItems(list);
-    	JOptionPane.showMessageDialog(null, "se intento");
+    	
+    	if (app.getCifreal().size()>0 && app.getOrdenes().size()>0) {
+			butVariacion.setDisable(false);
+			labVariacion.setVisible(true);
+			txtVariacion.setVisible(true);
+		}
+    	
+    	if (app.getTasasCif()!=null)
+    		txtTasaCIF.setText(""+app.getTasasCif().toString());
+		
     }
     
-
     public void init(CostosApp app) {
     	this.app=app;
     	butAddCIFReal.setDisable(false);
 		butAddOrden.setDisable(false);
-		butVariacion.setDisable(false);
+		labVariacion.setVisible(false);
+		txtVariacion.setVisible(false);
 		updateList();
-		//labVariacion.setVisible(false);
-		//txtVariacion.setVisible(false);
     }
     
 }

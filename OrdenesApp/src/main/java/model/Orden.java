@@ -45,7 +45,7 @@ public class Orden {
 	
 	@Override
 	public String toString() {
-		return "Orden #"+numero+"\nMaterial directo: "+md+"\nMano de obra directa:"+mod+"\nCIF:"+cif;
+		return "Orden #"+numero+"\nMaterial directo: $"+md+"\nMano de obra directa: $"+mod+"\nCIF: "+cif+"\n----------------";
 	}
 	
 }

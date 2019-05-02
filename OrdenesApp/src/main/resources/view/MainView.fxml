@@ -18,10 +18,10 @@
    </top>
    <right>
       <BorderPane prefHeight="417.0" prefWidth="355.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
-         <center>
+         <top>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="164.0" layoutY="25.0" text="Orden" />
+                  <Label layoutX="33.0" layoutY="47.0" text="Orden" />
                   <Label layoutX="29.0" layoutY="86.0" text="Orden No." />
                   <Label layoutX="29.0" layoutY="123.0" text="Material directo" />
                   <Label layoutX="29.0" layoutY="163.0" text="Mano de obra directa" />
@@ -36,9 +36,11 @@
                   <JFXButton fx:id="butAddCIFReal" layoutX="50.0" layoutY="373.0" onAction="#addCIFREAL" style="-fx-background-color: lightgrey;" text="Añadir CIF real" />
                   <JFXButton fx:id="butVariacion" contentDisplay="CENTER" layoutX="205.0" layoutY="373.0" onAction="#showVariacion" style="-fx-background-color: lightgrey;" text="Variación" />
                   <JFXButton fx:id="butAddOrden" layoutX="190.0" layoutY="330.0" onAction="#addOrdenes" style="-fx-background-color: lightgrey;" text="Añadir orden" />
+                  <Label layoutX="227.0" layoutY="23.0" text="Tasa CIF" />
+                  <JFXTextField fx:id="txtTasaCIF" layoutX="281.0" layoutY="19.0" prefHeight="25.0" prefWidth="63.0" />
                </children>
             </AnchorPane>
-         </center>
+         </top>
       </BorderPane>
    </right>
    <center>
