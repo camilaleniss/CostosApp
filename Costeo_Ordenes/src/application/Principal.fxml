@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="571.0" prefWidth="689.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PrincipalController">
+   <children>
+      <HBox layoutY="54.0" prefHeight="513.0" prefWidth="689.0">
+         <children>
+            <VBox prefHeight="513.0" prefWidth="346.0">
+               <children>
+                  <ScrollPane prefHeight="471.0" prefWidth="330.0">
+                     <content>
+                        <ListView fx:id="listOrdenes" prefHeight="467.0" prefWidth="321.0" />
+                     </content>
+                  </ScrollPane>
+                  <HBox fx:id="opcionOrdenes" prefHeight="40.0" prefWidth="314.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#editarOrden" prefHeight="32.0" prefWidth="120.0" text="Editar Orden">
+                           <HBox.margin>
+                              <Insets left="40.0" right="20.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#eliminarOrden" prefHeight="32.0" prefWidth="117.0" text="Eliminar Orden" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="513.0" prefWidth="383.0">
+               <children>
+                  <HBox layoutX="10.0" layoutY="35.0" prefHeight="40.0" prefWidth="364.0">
+                     <children>
+                        <Button fx:id="butAddPresupuesto" mnemonicParsing="false" onAction="#addPresupuesto" prefHeight="32.0" prefWidth="154.0" text="Añadir Presupuesto">
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Label prefHeight="18.0" prefWidth="65.0" text="Tasa Cif">
+                           <opaqueInsets>
+                              <Insets left="10.0" right="10.0" />
+                           </opaqueInsets>
+                        </Label>
+                        <TextField fx:id="txtTasaCIF" editable="false" prefHeight="26.0" prefWidth="115.0">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets right="30.0" />
+                     </padding>
+                  </HBox>
+                  <Separator layoutX="7.0" layoutY="74.0" prefHeight="3.0" prefWidth="348.0" />
+                  <GridPane layoutX="20.0" layoutY="75.0" prefHeight="133.0" prefWidth="331.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="202.0" minWidth="10.0" prefWidth="195.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="136.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Orden No." GridPane.rowIndex="1" />
+                        <Label text="Material directo" GridPane.rowIndex="2" />
+                        <Label text="Cantidad unidades CIF" GridPane.rowIndex="4" />
+                        <Label text="Mano de Obra Directa" GridPane.rowIndex="3" />
+                        <TextField fx:id="txtNorden" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtMD" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="txtMOD" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="txtCIF" editable="false" prefHeight="0.0" prefWidth="47.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                     </children>
+                  </GridPane>
+                  <GridPane fx:id="PaneVariacion" alignment="CENTER_RIGHT" layoutX="26.0" layoutY="422.0" prefHeight="88.0" prefWidth="331.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.0" minWidth="10.0" prefWidth="78.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.0" minWidth="10.0" prefWidth="88.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="172.0" minWidth="10.0" prefWidth="165.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="labVariacion" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#showVariacion" text="Variacion" GridPane.rowIndex="1" />
+                        <Label fx:id="labCIFReales" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Label fx:id="labCIFAplicados" GridPane.columnIndex="2" />
+                        <Label text="CIF Aplicados" GridPane.columnIndex="1" />
+                        <Label text="Cif reales" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label text="Variación" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </GridPane>
+                  <Button fx:id="butAddCIFReal" layoutX="139.0" layoutY="351.0" mnemonicParsing="false" onAction="#addCIFREAL" text="Añadir Cif Real" />
+                  <Button fx:id="butAddOrden" disable="true" layoutX="142.0" layoutY="212.0" mnemonicParsing="false" onAction="#addOrdenes" text="Añadir Orden" />
+                  <ScrollPane layoutX="7.0" layoutY="266.0" prefHeight="78.0" prefWidth="348.0">
+                     <content>
+                        <GridPane fx:id="listReales" alignment="TOP_CENTER" prefHeight="74.0">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                        </GridPane>
+                     </content>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </ScrollPane>
+                  <Button fx:id="butVariacion" disable="true" layoutX="156.0" layoutY="396.0" mnemonicParsing="false" onAction="#showVariacion" text="Variacion" visible="false" />
+                  <HBox fx:id="opcionesReal" layoutX="60.0" layoutY="392.0" prefHeight="40.0" prefWidth="265.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#editarCIFReal" prefHeight="32.0" prefWidth="120.0" text="Editar CIF Real">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#eliminarCifReal" prefHeight="32.0" prefWidth="117.0" text="Eliminar CIF Real" />
+                     </children>
+                  </HBox>
+                  <Separator layoutX="3.0" layoutY="255.0" prefHeight="3.0" prefWidth="348.0" />
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+      <Label layoutX="201.0" layoutY="18.0" text="Costos App Empresa X">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

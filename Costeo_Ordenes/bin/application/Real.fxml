@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="247.0" prefWidth="391.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RealController">
+   <children>
+      <GridPane layoutX="64.0" layoutY="78.0" prefHeight="92.0" prefWidth="266.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.0" minWidth="10.0" prefWidth="79.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="196.0" minWidth="10.0" prefWidth="187.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Nombre">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label text="Valor" GridPane.rowIndex="1">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <TextField fx:id="txtName" GridPane.columnIndex="1" />
+            <TextField fx:id="txtReal" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <Label layoutX="121.0" layoutY="22.0" text="CIF Real" textFill="#0c249a">
+         <font>
+            <Font name="System Bold Italic" size="39.0" />
+         </font></Label>
+      <HBox layoutX="115.0" layoutY="191.0" prefHeight="42.0" prefWidth="163.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#butGuardar" text="Guardar" />
+            <Button fx:id="butAtras" mnemonicParsing="false" onAction="#butAtras" text="Atras">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

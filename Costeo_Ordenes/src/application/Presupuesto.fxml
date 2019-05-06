@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="308.0" prefWidth="454.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PresupuestoController">
+   <children>
+      <Label layoutX="139.0" layoutY="42.0" text="Presupuesto" textFill="#0b6bb5">
+         <font>
+            <Font name="System Bold Italic" size="31.0" />
+         </font></Label>
+      <GridPane layoutX="63.0" layoutY="88.0" prefHeight="133.0" prefWidth="343.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="168.0" minWidth="10.0" prefWidth="168.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="143.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="CIF Presupuesto">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Label text="Unidades de la Base" GridPane.rowIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Label text="Base de asignación" GridPane.rowIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <TextField fx:id="txtCIF" GridPane.columnIndex="1" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <MenuButton fx:id="mbUnidades" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" text="Base" />
+                  <Button mnemonicParsing="false" onAction="#addTasa" prefHeight="25.0" prefWidth="28.0" text="+" />
+                  <Button mnemonicParsing="false" onAction="#eliminarTasa" prefHeight="25.0" prefWidth="27.0" text="-" />
+               </children>
+            </HBox>
+            <TextField fx:id="txtBase" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+      <Button fx:id="butSave" layoutX="205.0" layoutY="233.0" mnemonicParsing="false" onAction="#butGuardar" text="Guardar" />
+   </children>
+</AnchorPane>
