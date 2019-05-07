@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="308.0" prefWidth="454.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PresupuestoController">
+<AnchorPane prefHeight="308.0" prefWidth="454.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PresupuestoController">
    <children>
       <Label layoutX="139.0" layoutY="42.0" text="Presupuesto" textFill="#0b6bb5">
          <font>
