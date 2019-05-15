@@ -2,12 +2,12 @@ package modelo;
 
 public class Orden {
 	
-	private int numero;
+	private String numero;
 	private double md;
 	private double mod;
 	private double cif;
 	
-	public Orden(int numero, double md, double mod, double cif) {
+	public Orden(String numero, double md, double mod, double cif) {
 		this.numero=numero;
 		this.md= md;
 		this.mod=mod;
@@ -15,7 +15,7 @@ public class Orden {
 		
 	}
 	
-	public int getNum() {
+	public String getNum() {
 		return numero;
 	}
 	

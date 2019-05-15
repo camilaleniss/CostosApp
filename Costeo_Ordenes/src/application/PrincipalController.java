@@ -131,9 +131,10 @@ public class PrincipalController {
     
     public GridPane panelOrden(String[] ord) {
     	GridPane orden = new GridPane();
+    	//DecimalFormat formato1 = new DecimalFormat("#,###.00");
     		orden.add(new Label("Orden # "+ord[0]), 0, 0);
     		orden.add(new Label("Material Directo: "), 0, 1);
-    		orden.add(new Label(ord[1]), 1, 1);
+    		orden.add(new Label (ord[1]), 1, 1);
     		orden.add(new Label("Mano de Obra Directa: "), 0, 2);
     		orden.add(new Label(ord[2]), 1, 2);
     		orden.add(new Label("CIF: " ), 0, 3);
@@ -148,18 +149,26 @@ public class PrincipalController {
     @FXML
     void addOrdenes(ActionEvent event) {
     	try {
-	    	int id = Integer.parseInt(txtNorden.getText());
+	    	String id = (txtNorden.getText());
 	    	double md = Double.parseDouble(txtMD.getText());
 	    	double mod = Double.parseDouble(txtMOD.getText());
 	    	double cif = Double.parseDouble(txtCIF.getText());
-	    	if(id<0 || md<0 || mod<0 || cif<0)
+	    	if(md<0 || mod<0 || cif<0)
 	    		throw new NumberFormatException ();
-	    	app.addOrden(id, md, mod, cif);
+	    	boolean ya=app.addOrden(id, md, mod, cif);
+	    	if (!ya)
+	    		throw new NullPointerException();
     	}catch(NumberFormatException e) {
     		Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error");
 			alert.setHeaderText(null);
 			alert.setContentText("Ingrese un número válido");
+			alert.showAndWait();
+    	}catch(NullPointerException e) {
+    		Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText(null);
+			alert.setContentText("Orden repetida");
 			alert.showAndWait();
     	}catch(Exception e) {
     		Alert alert = new Alert(AlertType.ERROR);
@@ -248,7 +257,7 @@ public class PrincipalController {
     	double tReal = app.calcularCIFReal();
     	double variacion = app.getVariacion();
 
-    	DecimalFormat formato1 = new DecimalFormat("#.0");
+    	DecimalFormat formato1 = new DecimalFormat("#,###.00");
     	String var = (variacion<0) ? "Cif subaplicado " : "Cif sobreaplicado";
     	labCIFReales.setText(formato1.format(tReal));
     	labCIFAplicados.setText(formato1.format(tcosto));
@@ -265,7 +274,7 @@ public class PrincipalController {
     	dialog.setContentText("Escoge una de las ordenes");
     	Optional<String> result = dialog.showAndWait();
     	if (result.isPresent()){
-    		app.eliminarOrden(Integer.parseInt(result.get()));
+    		app.eliminarOrden((result.get()));
     		updateList();
     		if(app.getOrdenes().size()==0) {
     			opcionOrdenes.setVisible(false);

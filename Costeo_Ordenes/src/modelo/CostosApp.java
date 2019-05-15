@@ -62,26 +62,47 @@ public class CostosApp {
 		tasacif = new Presupuesto (cifpp, new BaseAsignacion(unidades, base));
 	}
 	
-	public Orden buscarOrden(int id) {
-		return ordenes.get(id);
+	public Orden buscarOrden(String id) {
+		for (int i=0; i<ordenes.size(); i++) {
+			if (ordenes.get(i).getNum().equals(id))
+				return ordenes.get(i);
+		}
+		return null;
 	}
 	
-	public void addOrden(int id, double md, double mod, double cif) {
-		ordenes.add(new Orden(id, md, mod, cif*tasacif.getTasaCif()));
-		
+	public boolean existeOrden(String id) {
+		boolean ya = false;
+		for (int i=0; i<ordenes.size() && !ya; i++) {
+			if (ordenes.get(i).getNum().equals(id))
+				ya=true;
+		}
+	
+		return ya;
 	}
 	
-	public void modifyMd(int id, double md) {
+	public boolean addOrden(String id, double md, double mod, double cif) {
+		boolean ya= existeOrden(id);
+		if (!ya) {
+			ordenes.add(new Orden(id, md, mod, cif*tasacif.getTasaCif()));
+			return true;
+		}
+		return false;
+	}
+	
+	
+	
+	
+	public void modifyMd(String id, double md) {
 		Orden orden = buscarOrden(id);
 		orden.setMd(md);
 	}
 	
-	public void modifyMod(int id, double mod) {
+	public void modifyMod(String id, double mod) {
 		Orden orden = buscarOrden(id);
 		orden.setMd(mod);
 	}
 	
-	public void modifyCIF(int id,  double value) {
+	public void modifyCIF(String id,  double value) {
 		Orden orden = buscarOrden(id);
 		orden.setCif(value);
 	}
@@ -134,10 +155,10 @@ public class CostosApp {
 		return lista;
 	}
 	
-	public void eliminarOrden(int nombreOrden) {
+	public void eliminarOrden(String nombreOrden) {
 		boolean terminar=false;
 		for (int i = 0; i < ordenes.size()&&!terminar; i++) {
-			if(ordenes.get(i).getNum()==nombreOrden) {
+			if(ordenes.get(i).getNum().equals(nombreOrden)) {
 				ordenes.remove(i);
 				terminar=true;
 			}
@@ -145,10 +166,10 @@ public class CostosApp {
 		
 	}
 
-	public void editarOrden(int nombreOrden,Orden nueva) {
+	public void editarOrden(String nombreOrden,Orden nueva) {
 		boolean terminar=false;
 		for (int i = 0; i < ordenes.size()&&!terminar; i++) {
-			if(ordenes.get(i).getNum()==nombreOrden) {
+			if(ordenes.get(i).getNum().equals(nombreOrden)) {
 				ordenes.get(i).setCif(nueva.getCif());
 				ordenes.get(i).setMd(nueva.getMd());
 				ordenes.get(i).setMod(nueva.getMod());
@@ -182,6 +203,10 @@ public class CostosApp {
 				terminar=true;
 			}
 		}
+	}
+	
+	public Orden buscarOrden(int i) {
+		return ordenes.get(i);
 	}
 	
 	public void editarTasa() {
